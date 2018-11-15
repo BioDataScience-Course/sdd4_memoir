@@ -1,0 +1,27 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE, results='hide'}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "images/readme/README-"
+)
+# packages ----
+SciViews::R
+library(skimr)
+```
+
+# Science des données IV : pratique
+## Engels Guyliann & Philippe Grosjean
+
+Ce travail a pour objectif de proposer des solutions simples et efficaces aux étudiants afin de réaliser une recherche de qualité et reproductible.
+
+
+
+

@@ -1,0 +1,88 @@
+---
+title: "Analyse des résultats physico-chimiques"
+output: html_notebook
+abstract: "Ce document a pour objectif de réaliser une première analyse des données physico-chimiques"
+---
+
+
+```{r setup}
+# Importation des packages
+SciViews::R
+library(econum)
+# Importation des données 
+pc <- read("../../data/physico.rds")
+```
+
+
+
+```{r}
+pc_plot <- function(data, y, x, factor, rect_start, rect_end){
+
+  a <- rect_start
+  b <- rect_end
+  data_rect <-tibble(x = a, y = b)
+
+  #data[!is.na(data[ , y]), ] -> data
+
+  chart(data, formula = as.formula(paste(y, "~", x))) +
+    geom_point(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
+    geom_line(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
+    geom_rect(
+      data = data_rect[data_rect$x >= min(data$number_day) & data_rect$x <= max(data$number_day), ],
+      inherit.aes = FALSE, aes(xmin = x, xmax = y, ymin = -Inf, ymax = Inf, alpha = 0.002),
+      show.legend = FALSE)
+}
+```
+
+# Température
+
+Une premier graphique portant sur la température met en évidence qu'il y a  des données manquantes. Par la suite l'ajout des périodes de jour et de nuit serait un plus.
+
+```{r}
+chart(pc, formula = T ~ number_day) +
+   geom_point(f_aes(T~ number_day%col=% code))+
+   geom_line(f_aes(T~ number_day%col=% code))
+```
+
+Les température fluctuent plus fortements dans l'aquarium avec la condition hyposaline. 
+
+```{r}
+ pc %>.%
+   filter(., T != "NA") %>.%
+   chart(., formula = T ~ number_day) +
+   geom_point(f_aes(T~ number_day%col=% code))+
+   geom_line(f_aes(T~ number_day%col=% code)) +
+   geom_rect(ymin = -1, ymax = 40, xmin = 29.83, xmax = 30.33, alpha = 0.005)+
+   geom_rect(ymin = -1, ymax = 40, xmin = 33.83, xmax = 34.33, alpha = 0.005) +
+   geom_rect(ymin = -1, ymax = 40, xmin = 34.83, xmax = 35.33, alpha = 0.005) +
+   geom_rect(ymin = -1, ymax = 40, xmin = 31.83, xmax = 32.33, alpha = 0.005) +
+   geom_rect(ymin = -1, ymax = 40, xmin = 32.83, xmax = 33.33, alpha = 0.005) +
+   geom_rect(ymin = -1, ymax = 40, xmin = 30.83, xmax = 31.33, alpha = 0.005)
+```
+
+Chaque graphique exprimant un paramètre physico-chimique va toujours avoir une structure similaire , l'écriture d'une fonction semble être un plus intéressant.
+
+```{r}
+# Une fois la fonction mise au point, elle est placé dans un R script
+pc_plot <- function(data, y, x, factor, rect_start, rect_end){
+
+  a <- rect_start
+  b <- rect_end
+  data_rect <-tibble(x = a, y = b)
+
+  chart(data, formula = as.formula(paste(y, "~", x))) +
+    geom_point(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
+    geom_line(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
+    geom_rect(
+      data = data_rect[data_rect$x >= min(data$number_day) & data_rect$x <= max(data$number_day), ],
+      inherit.aes = FALSE, aes(xmin = x, xmax = y, ymin = -Inf, ymax = Inf, alpha = 0.002),
+      show.legend = FALSE)
+}
+
+pc %>.%
+  filter(., T != "NA") %>.%
+  pc_plot(data = ., y = "T", x = "number_day", factor = "code",
+          rect_start = 29.83 + 0:5, rect_end = (29.83 + 0:5) + 0.5) +
+  labs(color = "Conditions")
+```
+

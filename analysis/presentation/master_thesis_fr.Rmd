@@ -1,0 +1,36 @@
+---
+title: 'Réponse écophysiologique de *Seriatopora hystrix* (Dana, 1846) suite à un stress hypo ou hypersalin à court terme'
+author: Guyliann Engels & Nadège Georges 
+institute: Université de Mons, Belgique\break Laboratoire d'Écologie numérique des Milieux aquatiques\break \includegraphics[width=.08\textwidth,height=.1\textheight]{template/EcoNum-logo.pdf}
+date: ''
+fontfamily: mathpazo
+fontsize: 9pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+SciViews::R
+pc <- read("../../data/physico.rds")
+source(file = "../../R/function.R")
+```
+
+### Matériels et méthodes
+
+\columnsbegin
+\columnsmall
+```{r,fig.align='center', echo=FALSE, out.width= '80%'}
+knitr::include_graphics("../../analysis/memoir/images/buoyant_weight.png")
+```
+\columnlarge
+
+La masse squelettique est déterminée via le poids immergé
+\columnsend
+
+### Température
+
+```{r, fig.align='c', out.width= '85%'}
+pc %>.%
+  filter(., T != "NA") %>.%
+  pc_plot(data = ., y = "T", x = "number_day", factor = "code",
+        rect_start = 29.83 + 0:5, rect_end = (29.83 + 0:5) + 0.5)
+```
