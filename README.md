@@ -20,7 +20,7 @@ Il vous est demandé d'employer ce projet afin de proposer une analyse des donn�
 
 -   Les premières analyses de vos données se font dans un notebook : `analysis -> notebook`.
 
-Ce document est très intéractif et permet d'intercaler du code R et des zones de texte
+Ce document est très interactif et permet d'intercaler du code R et des zones de texte
 
 -   Vos graphiques et résultats finaux doivent être transmis sous la forme :
     -   d'un mémoire : `analysis -> memoir`
