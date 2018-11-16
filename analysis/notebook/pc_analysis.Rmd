@@ -8,30 +8,8 @@ abstract: "Ce document a pour objectif de réaliser une première analyse des do
 ```{r setup}
 # Importation des packages
 SciViews::R
-library(econum)
 # Importation des données 
 pc <- read("../../data/physico.rds")
-```
-
-
-
-```{r}
-pc_plot <- function(data, y, x, factor, rect_start, rect_end){
-
-  a <- rect_start
-  b <- rect_end
-  data_rect <-tibble(x = a, y = b)
-
-  #data[!is.na(data[ , y]), ] -> data
-
-  chart(data, formula = as.formula(paste(y, "~", x))) +
-    geom_point(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
-    geom_line(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
-    geom_rect(
-      data = data_rect[data_rect$x >= min(data$number_day) & data_rect$x <= max(data$number_day), ],
-      inherit.aes = FALSE, aes(xmin = x, xmax = y, ymin = -Inf, ymax = Inf, alpha = 0.002),
-      show.legend = FALSE)
-}
 ```
 
 # Température
@@ -48,7 +26,7 @@ Les température fluctuent plus fortements dans l'aquarium avec la condition hyp
 
 ```{r}
  pc %>.%
-   filter(., T != "NA") %>.%
+   filter(., !is.na(T)) %>.%
    chart(., formula = T ~ number_day) +
    geom_point(f_aes(T~ number_day%col=% code))+
    geom_line(f_aes(T~ number_day%col=% code)) +
@@ -68,19 +46,23 @@ pc_plot <- function(data, y, x, factor, rect_start, rect_end){
 
   a <- rect_start
   b <- rect_end
-  data_rect <-tibble(x = a, y = b)
+  data_rect <-tibble::tibble(x = a, y = b)
 
-  chart(data, formula = as.formula(paste(y, "~", x))) +
-    geom_point(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
-    geom_line(f_aes(as.formula(paste(y, "~", x, "%col=%", factor)))) +
-    geom_rect(
+  #data[!is.na(data[ , y]), ] -> data
+
+  chart::chart(data, formula = stats::as.formula(paste(y, "~", x))) +
+    ggplot2::geom_point(chart::f_aes(
+      stats::as.formula(paste(y, "~", x, "%col=%", factor)))) +
+    ggplot2::geom_line(chart::f_aes(
+      stats::as.formula(paste(y, "~", x, "%col=%", factor)))) +
+    ggplot2::geom_rect(
       data = data_rect[data_rect$x >= min(data$number_day) & data_rect$x <= max(data$number_day), ],
-      inherit.aes = FALSE, aes(xmin = x, xmax = y, ymin = -Inf, ymax = Inf, alpha = 0.002),
+      inherit.aes = FALSE, ggplot2::aes(xmin = x, xmax = y, ymin = -Inf, ymax = Inf, alpha = 0.002),
       show.legend = FALSE)
 }
 
 pc %>.%
-  filter(., T != "NA") %>.%
+  filter(., !is.na(T)) %>.%
   pc_plot(data = ., y = "T", x = "number_day", factor = "code",
           rect_start = 29.83 + 0:5, rect_end = (29.83 + 0:5) + 0.5) +
   labs(color = "Conditions")

@@ -46,7 +46,7 @@ Au cours de l’expérience, les températures présentent une variation journal
 
 ```{r, fig.cap= "Variation de la température au cours de l'expérience d'hypo- et d'hypersalinité dans le bac contrôle (rouge) et les bacs expérimentaux (bleu et vert). Les zones grises représentent les périodes de nuit \\label{temp_plot}"}
 pc %>.%
-  filter(., T != "NA") %>.%
+  filter(., !is.na(T)) %>.%
   pc_plot(data = ., y = "T", x = "number_day", factor = "code",
         rect_start = 29.83 + 0:5, rect_end = (29.83 + 0:5) + 0.5)
 
@@ -59,9 +59,9 @@ Les variations de pH total au sein des différents bacs se produisent entre le j
 
 Les variations de jour et de nuit suivent les mêmes tendances entre le bac contrôle et le bac hyposalin. En ce qui concerne le bac hypersalin, les variations entre le jour et la nuit sont moins importantes que pour les deux autres conditions.
 
-```{r, fig.cap= "Variation de pH total au cours de l'expérience d'hypo- et d'hypersalinité dans le bac contrôle (rouge) et dans les bacs expérimentaux (bleu et vert). Les zones grises représentent les périodes de nuit.\\label{ph_plot }"}
+```{r, fig.cap= "Variation de pH total au cours de l'expérience d'hypo- et d'hypersalinité dans le bac contrôle (rouge) et dans les bacs expérimentaux (bleu et vert). Les zones grises représentent les périodes de nuit.\\label{ph_plot}"}
 pc %>.%
-  filter(., ph != "NA"  & number_day >33 ) %>.%
+  filter(., !is.na(ph)  & number_day >33 ) %>.%
 pc_plot(data = ., y = "ph", x = "number_day", factor = "code",
         rect_start = 29.83 + 0:5, rect_end = (29.83 + 0:5) + 0.5) 
 ```
