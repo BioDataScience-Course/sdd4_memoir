@@ -14,11 +14,12 @@ output:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
-
 ```{r child = 'titlepage.Rmd'}
 ```
 
-\newpage
+```{r, results='asis', eval=(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex')}
+cat('\\newpage\n\n')
+```
 
 ```{r child = 'acknowledgements.Rmd'}
 ```
@@ -26,15 +27,16 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```{r child = 'abstract_fr.Rmd'}
 ```
 
-\tableofcontents
-\newpage
+```{r, results='asis', eval=(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex')}
+cat('\\tableofcontents\n')
+cat('\\newpage\n\n')
 
-\listoffigures
-\newpage
+cat('\\listoffigures\n')
+cat('\\newpage\n\n')
 
-\listoftables
-\newpage
-
+cat('\\listoftables\n')
+cat('\\newpage\n\n')
+```
 
 ```{r child = 'introduction.Rmd'}
 ```
@@ -49,7 +51,6 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
 ```{r child = 'discussion.Rmd'}
-
 ```
 
 ```{r child = 'conclusion.Rmd'}
@@ -58,5 +59,5 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```{r child = 'appendix.Rmd'}
 ```
 
-# Bibliographie 
+# Bibliographie
 

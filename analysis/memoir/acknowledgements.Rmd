@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-\chapter*{Remerciement}
+# Remerciements {-}
 
 Je remercie le professeur Philippe Grosjean qui m’a accueillie dans son laboratoire afin d’effectuer ce mémoire et qui a permis la mise en oeuvre de celui-ci.
 

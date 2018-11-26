@@ -15,9 +15,10 @@ output:
 
 ## Les écosystèmes coralliens
 
+
 ### Généralités du milieu
 
-Apparu il y a 65 millions d’années , les récifs coralliens sont des écosystèmes extrêmement riches et considérés comme les plus anciens de notre planète [@McIntyre2010, @Veron2000]. Ils recouvrent une superficie d’environ 250 000 km2 et sont très souvent comparés à la forêt tropicale avec laquelle ils partagent de nombreuses caractéristiques [@Richmond2011, @Rosenberg2007].
+Apparu il y a 65 millions d’années, les récifs coralliens sont des écosystèmes extrêmement riches et considérés comme les plus anciens de notre planète [@McIntyre2010, @Veron2000]. Ils recouvrent une superficie d’environ 250\ 000\ km^2^ et sont très souvent comparés à la forêt tropicale avec laquelle ils partagent de nombreuses caractéristiques [@Richmond2011, @Rosenberg2007].
 
 La richesse que renferme ces écosystèmes est énorme. En effet, ils possèdent la plus grande diversité par unité de surface ainsi que la plus grande diversité d’habitat formé par les milliers d’espèces de coraux qui les peuplent [@McIntyre2010]. Ces écosystèmes se sont formés grâce à l’association particulière des Scléractiniaires avec des algues photosynthétiques du genre Symbiodinium, les zooxanthelles, menant à une symbiose mutualiste permettant la prolifération de ces coraux symbiotiques dans ces environnements éventuellement très oligotrophes.
 
@@ -28,5 +29,3 @@ Cet écosystème marin, bien que fortement diversifié, ne se trouve que dans un
 Les récifs intertropicaux sont construits par des scléractinaires dits hermatypiques. Trois grands types de récifs existent sur Terre  et dérivent les uns des autres \autoref{recif_type} : les récifs frangeants, les récifs barrière et les atolls [@Veron2000, @Cesar2003]. Les récifs frangeants sont des récifs se formant sur les bords du littoral et se trouvent par conséquent proches des côtes où ils forment un platier de faible profondeur appelé « le lagon ». Ce type de récifs est retrouvé, par exemple, autour de l’île de la Réunion. Le récif barrière quant à lui forme une structure plus éloignée des côtes comme observée au niveau de la Grande Barrière de Corail en Australie et provient d’un enfoncement progressif des terres. Pour finir, les atolls sont des structures retrouvées en pleine mer et sont de forme circulaire renfermant le lagon. Ce type de récifs se forme par enfoncement et disparition de l’île autour de laquelle il s’est formé. Les atolls peuvent être observés, par exemple, aux Maldives.
 
 ![Schéma représentant la formation des différents types de récifs. L'image représente un récif frangeant (à gauche), un récif barrière ( au centre) et un atoll (à droite) et montre le lien entre la formation de ces récifs [@Veron2000]\label{recif_type}](images/recif_type.png)
-
-
